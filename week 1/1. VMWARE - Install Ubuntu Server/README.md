@@ -145,8 +145,6 @@ Install OpenSSH server
 * #### Isikan nama, server name, dll.
 ![41](assets/60.jpg)
 
-* #### Klik Done.
-![42](assets/61.png)
 
 * #### Centang Install OpenSSH server.
 ![43](assets/62.png)
