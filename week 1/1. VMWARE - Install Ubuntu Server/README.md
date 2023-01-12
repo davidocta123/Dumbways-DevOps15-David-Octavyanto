@@ -8,23 +8,12 @@ DevOps merupakan singkatan dari dua kata yaitu Development dan Operation.
 Di mana kedua kata tersebut bermakna menggabungkan proses development (pengembangan) dari sebuah sistem/aplikasi dengan operation (operasional). bisa dibilang juga bahwa DevOps ini adalah prinsip developer untuk mengkoordinasikan antar tim, yaitu tim development dengan tim operations dengan efektif dan efisien.
 
 
-### 2. Sebutkan 2 lifecycle DevOps & jelaskan definisinya
+### 2. sebutkan lifecycle DevOps (Continuous ...) dan Jelaskan definisi-definisinya!
 
-- Plan (tahap perencanaan) : pada tahap ini sebelum memulai membangun sebuah aplikasi kita harus melakukan perencanaan terlebih dahulu. Dikarenakan segala sesuatu yang dimulai tanpa adanya perencanaan terlebih dahulu bisa terjadi ketidaksesuain dalam membangun sebuah aplikasi. Contohnya bila tidak ada perencanaan : waktu pembangunan sebuah aplikasi tidak tepat waktu, biaya (cost) yang dikeluarkan untuk pembangunan aplikasi bisa membengkak, dll.
+- Continuous Development: ini melibatkan perencanaan dan pengkodean dalam pengembangan perangkat lunak. Di sini, seluruh proses pengembangan dipecah menjadi siklus pengembangan yang lebih kecil / dipecah - pecah. Proses ini memudahkan tim DevOps untuk mempercepat proses pengembangan perangkat lunak secara keseluruhan
 
-- Code  : pada tahap ini development team akan bekerja untuk membuat code dan membangun sebuah aplikasi yang sudah direncanakan sebelumnya. Pada tahap ini perlu adanya kerjasama yang baik antara tim development dengan tim operation agar nantinya aplikasi yang sudah dibuat bisa berjalan dengan baik.
-
-- Build : setelah tahap pembuatan code oleh tim development, maka step selanjutnya adalah mem-build code tersebut untuk mengetahui apakah code tersebut masih mengalami error setelah dibuild atau sudah bisa berjalan dengan baik.
-
-- Test : pada tahap ini yaitu mengetest code yang sudah dibuild dari tim development. seperti pengujian fungsionalitas dari aplikasi contohnya apakah bisa login dan logout dengan baik, beserta fungsionalitas lainnya. dan bila masih terdapat error pada tahap ini, maka error yang ditemukan pada tahap ini akan dikembalikan ke tim development agar codenya diperbaiki lagi pada fungsionalitas yang bermasalah. 
-
-- Release : pada tahap ini tim developers akan membuat suatu release aplikasi tersebut. tujuannya semisal ada perubahan-perubahan selanjutnya atau adanya update dari aplikasi ini pengguna juga bisa tahu bahwa ada perubahan atau update dari suatu aplikasi tersebut.
-
-- Deploy : pada tahap ini tim operation akan bekerja untuk mendeploy aplikasi yang sudah dibangun oleh tim development. Proses deployment juga butuh waktu untuk proses installasi dibagian server dan perlunya perhitungan spek yang dibutuhkan pada bagian server agar aplikasi tidak terbebani semisal diakses oleh banyak user.
-
-- Operate : pada tahap ini aplikasi kan sudah di publish ke publik dan banyak user yang menggunakan, bisa jadi user dalam mengakses aplikasi ada yang error atau tampilannya ada yang rusak saat diakses melalui hp atau yang lain sebagainya. dan pada tahap ini memastikan bahwa tidak ada masalah-masalah seperti itu.
-
-- Monitor : pada tahap ini dilakukan monitoring dari tim operations untuk memonitoring aplikasi atau produk yang sudah di publish ke publik. bisa dilakukan monitoring dari segi infrastrukturnya apakah servernya ada yang down, atau dari segi sistem yang bekerja apakah terbebani dengan banyaknya user yang mengakses aplikasi tersebut dan lain sebagainya.
+- Continuous integration (CI) adalah langkah-langkah yang berkaitan dengan fase pengujian atau testing. Pada fase ini, Klien juga memberikan informasi yang akan dimasukkan untuk menambahkan fitur baru ke aplikasi. Pada fase ini juga sebagian besar perubahan terjadi pada kode. CI adalah pusat dimana perubahan pada kode yang sering terjadi setiap hari maupun bulan.
+Kode yang dibangun ini adalah kombinasi antara Unit Test, Code Review, Integration dan Packaging. Pada fase ini developer sangat sering melakukan perubahan, mereka akan sangat cepat menemukan masalah yang terjadi (jika ada) dan menyelesaikannya pada tahap Continuous Development
 
 
 ### 3. Installasi Ubuntu Server
@@ -35,7 +24,7 @@ Install OpenSSH server
 
 
 * #### Kunjungi situs vmware.com seperti gambar dibawah ini. Lalu pilih download for windows atau linux sesuai dengan OS yang digunakan.
-![01](assets/1.png)
+![01](assets/1.jpg)
 
 * #### Lalu klik Next.
 ![02](assets/2.png)
