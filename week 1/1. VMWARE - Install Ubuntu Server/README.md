@@ -18,7 +18,7 @@ Kode yang dibangun ini adalah kombinasi antara Unit Test, Code Review, Integrati
 
 ### 3. Installasi Ubuntu Server
 
-1 CPU, 2GB RAM & 20GB Storage ( 2GB digunakan utk swap )
+2 CPU, 2GB RAM & 20GB Storage ( 2GB digunakan utk swap )
 setup IP Static
 Install OpenSSH server
 
