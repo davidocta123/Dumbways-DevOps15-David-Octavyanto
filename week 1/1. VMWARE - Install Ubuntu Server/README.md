@@ -168,7 +168,7 @@ Install OpenSSH server
 ![50](assets/69.png)
 
 * #### Login menggunakan username dan password.
-![51](assets/70.png)
+![51](assets/35.jpg)
 
 * #### Untuk mengecek koneksi internet, ping dns dari google.
 ![52](assets/73.png)
