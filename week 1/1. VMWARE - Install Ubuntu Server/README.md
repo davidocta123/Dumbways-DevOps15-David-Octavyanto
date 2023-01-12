@@ -110,10 +110,8 @@ Install OpenSSH server
 ![29](assets/47.png)
 
 * #### Masukkan Subtet, IP Address, dll (Sesuai IP dari laptop kita masing-masing). Lalu tekan save.
-![30](assets/48.png)
+![30](assets/23.jpg)
 
-* #### Lalu tekan Done.
-![31](assets/50.png)
 
 * #### Untuk proxy server kosongi saja.
 ![32](assets/51.png)
