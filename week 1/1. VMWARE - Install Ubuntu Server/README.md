@@ -171,4 +171,4 @@ Install OpenSSH server
 ![51](assets/35.jpg)
 
 * #### Untuk mengecek koneksi internet, ping dns dari google.
-![52](assets/73.png)
+![52](assets/36.jpg)
