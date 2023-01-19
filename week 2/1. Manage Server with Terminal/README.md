@@ -1,121 +1,120 @@
-# Task : Application in Server
+# Task : Manage Server with Terminal
 
 
-## 1. Perbandingan antara Monolith & Microservices
+## 1. Apa itu terminal
+Terminal adalah interface di mana Anda bisa mengetikkan baris-baris perintah berbasis teks untuk sistem operasi Linux. Biasanya, sebutan lain terminal adalah Shell. Jika Anda familiar dengan OS Windows, Terminal pada Linux memiliki fungsi yang mirip dengan CMD (Command Prompt). 
+Terminal memungkinkan pengguna komputer untuk menjalankan berbagai fungsi pada komputer melalui baris-baris perintah. Walaupun saat ini kebanyakan sistem operasi sudah memiliki tampilan grafis, tapi hal itu terkadang belum cukup. Ada beberapa fungsi yang hanya dapat Anda jalankan dengan baris perintah, di sinilah peran Terminal dalam membantu Anda. 
 
-#### Aplikasi monolitik terbentuk sebagai satu kesatuan kode yang tidak dapat dipisahkan satu dan lainnya. Salah satu karakter sistem arsitektur monolitik adalah saat pemrogram ingin melakukan perubahan pada sistem monolitik, developers harus mengubah satu kesatuan kode secara menyeluruh dan bersamaan. semisal ada fitur yang tidak berjalan, maka fitur yang lainnya juga akan berhenti berjalan.
+## 2. BASH script untuk update dan upgrade server, lalu install nginx/apache2
 
-#### Jika monolitik adalah sebuah arsitektur aplikasi secara kesatuan atau tunggal, maka microservices adalah sebaliknya. Microservices terbagi menjadi beberapa unit pecahan yang lebih kecil dan spesifik. Setiap unitnya terpisah dan memiliki sistem beserta database sendiri untuk beroperasi dan menggunakan mekanisme API untuk terhubung dengan unit lainnya. bisa dibilang microservice ini setiap fitur memiliki databasenya sendiri pada setiap server, dan akan ada suatu database dan server yang lebih besar untuk menghandle semua fitur tersebut.
+* #### Pertama lihat list di dalam ubuntu kita
+![01](assets/30.jpg)
 
-### Monolitik :
+* #### Ketik nano (nama_file) pada kasus saya ini saya buat nama file update_upgrade_server.sh. Lalu masukkan perintah untuk update dan upgrade server juga install nginx di ubuntu.
+![02](assets/2.jpg)
 
-* #### Memiliki tim yang kecil
-* #### Sistem aplikasinya sederhana
-* #### Meluncurkan aplikasi lebih cepat
+* #### Jika sudah tersimpan pada list direktori akan terbuat file update_upgrade_server.sh..
+![03](assets/3.jpg)
 
-### Microservices :
+* #### Untuk menjalankan bash script di ubuntu server gunakan perintah sh nama_file (update_upgrade_server.sh). Maka proses akan dilakukan secara otomatis oleh server kita.
+![04](assets/4.jpg)
 
-* #### Aplikasi lebih rumit dan bertujuan untuk perluasan bisnis
-* #### Memiliki tim programmer yang memadai
+## 3. BASH script untuk memberi akses ke port 22,80,443
+* #### Untuk memberikan akses port kita harus mengecek dahulu apakah settingan firewall diubuntu server kita sudah active atau belum dengan perintah sudo ufw status. Maka akan muncul tulisan active atau inactive.
+![05](assets/5.jpg)
 
+* #### Buat file untuk menjalankan bash script. Pada kasus ini saya beri nama allow_22_80_443.sh..
+![06](assets/6.jpg)
 
-## 2. Deploy Aplikasi wayshub-frontend (NodeJS)
+* #### Masukkan perintah sudo ufw allow (port_yang_di_allow) pada file allow_22_80_443.sh. sudo ufw allow bertujuan untuk memberikan akses untuk port 22, 80, dan 443 untuk bisa diakses dari luar server ubuntu kita
+![07](assets/7.jpg)
 
-* #### Pertama clone terlebih dahulu aplikasi yang ingin kita install.
-![01](assets/nomer_2/1.png)
+* #### Untuk memastikan bahwa perintah yang kita jalankan nantinya bisa berjalan dengan lancar. Coba cek ulang perintah yang kita masukkan di file allow_22_80_443.sh. Dengan perintah cat allow_22_80_443.sh
+![08](assets/8.jpg)
 
-* #### Setelah clone dari github pastikan bahwa file atau folder yang sudah kita clone berada dalam laptop atau pc kita, pada gambar di bawah sudah ada folder yang bernama wayshub-frontend.
-![02](assets/nomer_2/2.png)
+* #### Pertama coba terlebih dahulu untuk ssh ke server ubuntu kita melalui cmd. Maka akan muncul pesan error pada saat kita mau akses melalui ssh, dikarenakan pada server ubuntu kita belum memberikan akses port 22 untuk diakses melalui luar server dari ubuntu kita
+![09](assets/9.jpg)
 
-* #### Lalu jangan lupa untuk berpindah ke direktori wayshub-frontend.
-![03](assets/nomer_2/3.png)
+* #### Untuk menkalankan perintah bash script cukup dengan sh nama_file (allow_22_80_443.sh). Maka akan muncul tulisan "Rule added" yang artinya memberikan akses port kita untuk diakses dari luar server ubuntu sudah berhasil
+![10](assets/10.jpg)
 
-* #### Dikarenakan dalam proses clone, dependencies dari aplikasi masih belum terinstall, maka untuk aplikasi node js jalankan npm install, dengan command ini akan mengunduh semua dependencies yang diperlukan untuk menjalankan aplikasi tersebut sesuai apa yang tercantum di dalam package.json aplikasi tersebut.
-![04](assets/nomer_2/4.png)
+* #### Untuk mengeceknya apakah sudah berhasil atau belum, bisa kita coba untuk ssh di ubuntu server kita. Jika sudah berhasil untuk mengakses server ubuntu melalui ssh. Berarti akses port dari luar server ubuntu sudah berhasil
+![11](assets/11.jpg)
 
-![05](assets/nomer_2/5.png)
+## 4. Tugas text manipulation
 
-* #### Setelah proses npm install coba lihat list dari folder saat ini dengan perintah ll atau ls -la, bisa dilihat pada gambar dibawah ada folder bernama node_modules yang sebelumnya tidak ada, tetapi setelah memasukkan perintah npm install maka folder tersebut akan terbuat dikarenakan semua dependencies yang diperlukan aplikasi tersebut berada dalam folder tersebut.
-![06](assets/nomer_2/6.png)
+* ### - contoh penggunaan cat, grep, echo & sort
+* ### - mengganti text 'Dumbways' ke 'Bootcamp'
 
-* #### Untuk menjalankan aplikasi pada node js, ketikkan perintah npm start.
-![07](assets/nomer_2/7.png)
+1. Cat 
 
-* #### Setelah npm start maka akan muncul tulisan starting development program dan selanjutnya akan muncul di port berapa aplikasi yang kita jalankan berjalan, namun pada case ini port tidak muncul dikarenakan pada aplikasi ini masih ada sejumlah attention bahwa codingan atau script code dari aplikasi ini masih belum clean code atau masih ada yang perlu diperbaiki dalam script codenya, namun ini bukan error atau bug.
-![08](assets/nomer_2/8.png)
+* ### cat (file-name)
+![12](assets/12.jpg)
 
-* #### Setelah berjalan jika kalian ingin melihat di port yang berjalan di laptop atau PC kalian bisa dengan command netstat -nlptu untuk melihat port berapa saja yang berjalan di laptop atau PC, cari saja port dengan nama program name yang sama dengan aplikasi yang sedang kalian jalankan pada saat ini.
-![09](assets/nomer_2/9.png)
+keterangan : untuk melihat isi dari suatu file
 
+* ### cat > (file-name)
+![13](assets/13.jpg)
 
-## 3. Deploy Golang & Python dengan menampilkan nama masing-masing
+keterangan : untuk membuat suatu file baru serta memasukkan teks, Jika sudah menambakan teks kalian dapat keluar dengan klik CTRL + C.
 
-* #### Install pm2 dengan command npm install -g pm2.
-![01](assets/nomer_3/1.png)
+* ### cat file1 file2 > file3
+![14](assets/14.jpg)
 
-* #### Untuk mengecek apakah sudah terinstall pm2, coba masukkan perintah pm2 list, ini akan menampilkan list program yang sudah dijalankan dengan pm2.
-![02](assets/nomer_3/2.png)
+keterangan : untuk menggabungkan dua buah file, dan menyimpannya ke dalam file3
 
-* #### Masuk ke direktori dari aplikasi yang ingin dijalankan, lalu cek list file dan folder yang berada dalam aplikasi tersebut menggunakan command ll.
-![03](assets/nomer_3/4.png)
+2. Send 
 
-* #### Untuk menjalankan aplikasi golang di pm2, pastikan sudah menjalankan build pada index.go dengan command "go build index.go", setelah membuild index.go maka akan terbuat file atau folder bernama index yang berisi data hasil build dari index.go, lalu coba jalankan ./index untuk mengetahui apakah build dari aplikasi golang sudah berjalan lancar, dalam case ini akan muncul tulisan Ilham Dwi Kurniawan setelah menjalankan ./index dikarenakan di dalam aplikasi golang saya hanya menampilkan nama saya di script code golangnya. Lalu untuk menjalankan aplikasi golang di pm2 bisa menggunakan command pm2 start ./index --name <nama_aplikasi> dan akan ditampilkan list dari aplikasi yang berjalan di pm2.
-![04](assets/nomer_3/5.png)
+* ### sed -i 's/hallo dumbways/Bootcamp/g' file3
+![15](assets/15.jpg)
 
-* #### Untuk menjalankan aplikasi python di pm2, masuk ke dalam direktori aplikasi python terlebih dahulu, lalu masukkan perintah pm2 start index.py --name <nama_aplikasi> --interpreter python3, nah disini untuk menjalankan aplikasi python di pm2 dibutuhkan interpreter dari python untuk berjalan di pm2.
-![05](assets/nomer_3/6.png)
+keterangan : mengganti semua kata hallo dumbways menjadi Bootcamp pada file3
 
-* #### Lalu cek di port berapa aplikasi python berjalan menggunakan netstat -nlptu, setelah itu buka terminal yang lain untuk menjalankan localtunnel, untuk menjalankan localtunnel bisa menggunakan command lt --port <port_yang_berjalan_diaplikasi_python>, setelah itu akan muncul semacam link untuk membuka aplikasi tersebut. 
-![06](assets/nomer_3/7.png)
+3. Grep
 
-* #### Lalu copy paste ke browser kalian link tersebut. Jika muncul tulisan Continue, maka klik saja tombol Continue tersebut.
-![07](assets/nomer_3/8.png)
+* ### grep Bootcamp file3
+![16](assets/16.jpg)
 
-* #### Untuk menjalankan aplikasi nodejs di pm2 kurang lebih sama seperti aplikasi python dan golang dengan menjalankan perintah pm2 start index.js --name <nama_aplikasi> -- start. lalu cek dimana port berjalan.
-![08](assets/nomer_3/9.png)
+keterangan : akan mencari kata Bootcamp pada file3
 
-* #### Lalu cek dimana port berjalan, kemudian akses menggunakan ip dari multipass ditambah port tersebut berjalan.
-![09](assets/nomer_3/10.png)
+* ### grep -c Bootcamp file3
+![17](assets/17.jpg)
 
-* #### Ini adalah proses deploy aplikasi wayshub-frontend di pm2.
-![10](assets/nomer_3/11.png)
+keterangan : akan menghitung jumlah kata “Bootcamp” pada filetiga
 
-![11](assets/nomer_3/12.png)
+* ### grep Bootcamp *
+![18](assets/18.jpg)
 
-![12](assets/nomer_3/13.png)
+keterangan : akan mencari semua file yang berisikan kata Bootcamp
 
+4. Echo & Short
 
-## 4. Jalankan localtunnel untuk aplikasi no 1
+* ### sort file4
+![19](assets/19.jpg)
 
-* #### Jalankan perintah sudo apt install curl.
-![01](assets/nomer_4/1.png)
+keterangan : untuk mengurutkan berdasarkan ascending
 
-* #### Lalu jalankan perintah seperti pada gambar di bawah ini.
-![02](assets/nomer_4/2.png)
+* ### sort -r file4
+![20](assets/20.jpg)
 
-* #### Lalu install nvm 14.
-![03](assets/nomer_4/3.png)
+keterangan : untuk mengurutkan berdasarkan descending
 
-* #### Cek versi node js dan npm.
-![04](assets/nomer_4/4.png)
+* ### echo "Hello Dumbways!"
+![21](assets/21.jpg)
 
-* #### Lalu install localtunnel dengan perintah npm install -g localtunnel, -g artinya kita menginstall secara global dan akan bisa diakses di dalam direktori manapun di dalam laptop atau pc kita.
-![05](assets/nomer_4/5.png)
+keterangan : untuk mencetak string **
 
-* #### Jangan lupa untuk selalu menjalankan npm install terlebih dahulu setelah meng-clone dari github lalu npm start. Agar aplikasi kita bisa diakses secara publik melalui internet dengan menggunakan localtunnel, jalankan terlebih dahulu aplikasi kita menggunakan npm start, lalu buka terminal baru dan masukkan perintah lt --port <port_yang_berjalan_diaplikasi_tersebut>.
-![06](assets/nomer_4/6.png)
+* ### echo "Hello Dumbways!" >> file3
+![22](assets/22.jpg)
 
-* #### Setelah menjalankan perintah lt --port <port_yang_berjalan_diaplikasi_tersebut> maka akan muncul link untuk mengakses aplikasi tersebut lewat internet. Copy paste link tersebut ke dalam browser.
-![07](assets/nomer_4/7.png)
+keterangan : untuk mencetak kata Hello Dumbways! di file
 
-* #### Lalu Click to Continue.
-![08](assets/nomer_4/8.png)
+* ### echo "Replace semua data" > file5
+![23](assets/23.jpg)
 
-* #### Maka aplikasi tersebut sudah bisa diakses melalui internet.
-![09](assets/nomer_4/9.png)
+keterangan : untuk mereplace semua data di file5 dan menggantinya dengan "Replace semua data"
 
-
-## Challenge
-### Gunakan PM2
-
-### Repository : https://github.com/dumbwaysdev/wayshub-frontend
+## 4. Gunakan nmon untuk tampilkan CPU usage, RAM usage, Disk dan Resources OS & Proc
+![24](assets/24.jpg)
+![25](assets/25.jpg)
+![26](assets/26.jpg)
